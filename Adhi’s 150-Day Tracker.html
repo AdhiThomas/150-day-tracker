@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adhi’s 150-Day Tracker</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6fb;--cd:#fff;--tx:#1b2433;--mu:#66748b;--ln:#dde4ee;--ac:#2f6fed;--ok:#1f9d63;--bad:#d9534f;--lo:#e8edf5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151e;--cd:#182030;--tx:#e8edf6;--mu:#93a1b8;--ln:#27324a;--ac:#6b9bff;--ok:#3ec98a;--bad:#f0807c;--lo:#232e44}}
+:root[data-theme="dark"]{--bg:#10151e;--cd:#182030;--tx:#e8edf6;--mu:#93a1b8;--ln:#27324a;--ac:#6b9bff;--ok:#3ec98a;--bad:#f0807c;--lo:#232e44}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+main{max-width:1180px;margin:0 auto;padding:14px}
+header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:12px}
+h1{font-size:20px;margin:0}.pill{background:var(--ac);color:#fff;border-radius:99px;padding:3px 11px;font-size:13px;font-weight:600}
+button,input[type=date]{font:inherit;color:var(--tx);background:var(--cd);border:1px solid var(--ln);border-radius:9px;padding:7px 11px;cursor:pointer}
+button.p{background:var(--ac);color:#fff;border-color:var(--ac)}button:disabled{opacity:.45;cursor:default}
+.nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.grid{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:900px){.grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}.an{display:grid;grid-template-columns:1fr 1fr;gap:12px}.an .w{grid-column:1/-1}}
+.cd{background:var(--cd);border:1px solid var(--ln);border-radius:14px;padding:14px;margin-bottom:12px}.an .cd{margin:0}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);margin:0 0 8px}
+.top{display:flex;align-items:center;gap:14px}.ring{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;flex:none}
+.ring b{background:var(--cd);width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:20px}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px}.s{background:var(--lo);border-radius:10px;padding:8px;text-align:center}.s b{display:block;font-size:17px}.s span{font-size:11px;color:var(--mu)}
+label.it{display:flex;gap:11px;align-items:flex-start;padding:10px 2px;border-top:1px solid var(--ln);cursor:pointer;min-height:44px}
+h3{font-size:13px;margin:10px 0 2px;color:var(--ac)}h3:first-child{margin-top:0}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--ok);flex:none;margin:0}.dn .x{text-decoration:line-through;color:var(--mu)}
+.bn{background:var(--lo);border-radius:10px;padding:9px;font-size:13px;margin-bottom:10px}
+textarea{width:100%;min-height:84px;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:9px;font:inherit;resize:vertical}
+.bars{display:flex;align-items:flex-end;gap:7px;height:110px}.bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:11px;color:var(--mu)}
+.bar i{display:block;width:100%;border-radius:6px 6px 0 0;background:var(--ac);min-height:2px}.bar.na i{background:var(--lo)}
+.rw{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-top:7px}.mt{height:6px;background:var(--lo);border-radius:4px;overflow:hidden;margin-top:2px}.mt i{display:block;height:100%;background:var(--ok)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{padding:5px 3px;border-top:1px solid var(--ln);text-align:right}th:first-child,td:first-child{text-align:left}th{color:var(--mu);font-weight:600;border:0}
+.up{color:var(--ok)}.dw{color:var(--bad)}.tw{overflow-x:auto}
+.heat{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}@media(min-width:600px){.heat{grid-template-columns:repeat(15,1fr)}}
+.heat div{aspect-ratio:1;border-radius:5px;background:var(--lo);font-size:9.5px;display:grid;place-items:center;cursor:pointer;border:1px dashed transparent}
+.heat .nl{border-color:var(--bad)}.heat .fu{opacity:.4;cursor:default}
+.note{font-size:12px;color:var(--mu);margin-top:6px}ul.in{margin:0;padding-left:18px;font-size:14px}ul.in li{margin-bottom:5px}
+.sv{font-size:12px;color:var(--mu)}.tg{display:flex;gap:6px}.tg button{flex:1;padding:11px;font-weight:600}
+</style></head><body><main>
+<header><div><h1>Adhi’s 150-Day Tracker</h1><div class="sv" id="sync">Loading…</div></div>
+<div class="nav"><button id="pv">‹</button><input type="date" id="dp"><button id="nx">›</button><button id="td">Today</button><button id="th">Theme</button></div></header>
+<div class="cd" style="padding:8px"><div class="tg" id="tg"><button data-t="school">School day</button><button data-t="holiday">Holiday / leave day</button></div></div>
+<div class="grid"><section>
+<div class="cd"><div class="top"><div class="ring" id="ring"><b id="pc">0%</b></div><div><span class="pill" id="dn"></span><div style="font-weight:600;margin-top:6px" id="dt"></div><div class="sv" id="cn"></div></div></div></div>
+<div class="cd"><div id="bn"></div><div id="list"></div></div>
+<div class="cd"><h2>Day review and notes</h2><textarea id="nt" placeholder="What went well, what went wrong, and why?"></textarea>
+<div class="nav" style="margin-top:8px"><button class="p" id="rv"></button><span class="sv" id="sc"></span></div></div>
+</section><section class="an">
+<div class="cd w"><h2>Overview (reviewed days only)</h2><div class="st" id="ov"></div></div>
+<div class="cd"><h2>This 7 days vs previous 7</h2><div id="wk"></div><div class="bars" id="b7" style="margin-top:10px"></div></div>
+<div class="cd"><h2>Monthly trend</h2><div class="bars" id="bm"></div><div class="note" id="bd"></div></div>
+<div class="cd w"><h2>Insights</h2><ul class="in" id="ins"></ul></div>
+<div class="cd"><h2>Pillar scores</h2><div id="pl"></div></div>
+<div class="cd"><h2>Habit highlights</h2><div id="hl"></div></div>
+<div class="cd w"><h2>Habit analytics</h2><div class="tw"><table id="ht"></table></div><div class="note">Each habit is scored only on reviewed days when it applied (Sunday habits only on Sundays). Arrow compares last 7 days with the 7 before.</div></div>
+<div class="cd w"><h2>150-day heat map (tap a day to open it)</h2><div class="heat" id="hm"></div><div class="note">Green = completion % of a reviewed day. Red dashed = unreviewed day with no data or not reviewed. Dim = future. Streak and averages count reviewed days; streak needs 80% or more.</div></div>
+<div class="cd w"><h2>Backup and restore</h2><div class="nav"><button id="ex">Export JSON</button><input type="file" id="fl" accept=".json,application/json"><button id="im">Import pasted JSON</button></div>
+<textarea id="jx" placeholder="Export shows JSON here too. Paste a backup here and tap Import to restore. Import merges: the newer update per day wins."></textarea><div class="note" id="iv"></div></div>
+</section></div></main>
+<script>
+const START="2026-10-19",N=150,TH=80;
+const P=[["study","Studies & deep work"],["fit","Fitness"],["hlth","Health & nutrition"],["eye","Eye care"],["groom","Hair, skin & grooming"],["eng","English & current affairs"],["focus","Focus & phone discipline"],["sleep","Sleep & routine"],["org","Organization & review"]];
+const G=[["Morning",[["wake","5:30 Woke on time","sleep"],["face","5:30 Ice-cold face wash","groom"],["wat0","2 glasses of water + brushed teeth","hlth"],["work","5:45 Workout","fit"],["bath","6:10 Bath + protein breakfast","hlth","","6:15 Bath + protein breakfast"],["st1","6:20 Deep study (2 hours)","study","","6:30 Deep study block 1 (2 hours)"],["care","8:20 Hair care + skin care (moisturizer, sunscreen)","groom","","8:30 Hair care + skin care (moisturizer, sunscreen)"],["pack","Bag + water bottle packed","org","s"],["hst2","9:00 Deep study block 2 (2 hours)","study","h"]]],
+["School",[["b11","11:00 Healthy snack","hlth"],["day","Daylight break (5 min outside)","eye"],["lun","12:30 Lunch eaten properly","hlth"],["b3","3:00 Eye rest break","eye","s"],["wat","1-litre bottle finished by 3 PM","hlth","","Drank 2+ litres of water through the day"],["tif","5:00 School tiffin","hlth","s"],["hrest","1:15 Rest or short nap (30 min max)","sleep","h"],["hst3","2:00 Revision or weak-subject practice (1.5 hours)","study","h"],["hfit","4:30 Play, sports or a long walk (45 min)","fit","h"],["hsn","5:15 Healthy snack (fruit, nuts, sundal)","hlth","h"]]],
+["Evening",[["hom","7:15 Washed hands + face","groom","s"],["din","7:30 Short walk + light dinner","hlth"],["st2","8:00 Deep study (1 hour)","study"],["eye2","Eye rule during study (look far every 30 min)","eye"],["eng","9:00 English + current affairs","eng"],["hclr","Room and desk cleaned, tomorrow planned","org","h"]]],
+["Night",[["ent","No movies or songs before study was done","focus"],["ph","9:30 Phone off","focus"],["nit","Face wash, moisturizer, teeth, hair dry","groom"],["slp","9:45 In bed","sleep"]]],
+["Sunday only",[["sun","Hair oil + wash","groom"],["tidy","Nails, desk, bag, bed sheets","org"],["rev","Weekly review (10 min)","org"]]]];
+const H=[];G.forEach(g=>g[1].forEach(h=>H.push({id:h[0],l:h[1],p:h[2],g:g[0],sun:g[0]==="Sunday only",t:h[3]||"",l2:h[4]})));
+const lab=(h,t)=>t==="holiday"&&h.l2?h.l2:h.l;
+const $=i=>document.getElementById(i);
+const key=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const parse=k=>{const p=k.split("-");return new Date(+p[0],+p[1]-1,+p[2])};
+const addD=(k,n)=>{const d=parse(k);d.setDate(d.getDate()+n);return key(d)};
+const isSun=k=>parse(k).getDay()===0;
+const DATES=Array.from({length:N},(_,i)=>addD(START,i)),END=DATES[N-1];
+const dayNo=k=>Math.round((parse(k)-parse(START))/864e5)+1;
+const HOL=["2026-10-20"];
+const defT=k=>{const w=parse(k).getDay();return w===0||w===6||HOL.includes(k)?"holiday":"school"};
+const typeOf=k=>(recs[k]&&recs[k].type)||defT(k);
+const appIds=(k,t)=>{t=t||typeOf(k);return H.filter(h=>(!h.sun||isSun(k))&&(!h.t||(h.t==="s")===(t==="school"))).map(h=>h.id)};
+let recs={},sel,today,edit=false,ref=null,pend={},timer=null,nt=null,state="local";
+function clampDay(k){return k<START?START:k>END?END:k}
+function setS(s){state=s;$("sync").textContent={local:"Saved on this device only (cloud sync not active)",syncing:"Syncing to your account…",account:"Saved to your account and this device",error:"Cloud save failed: kept on this device, will retry on your next change"}[s]}
+function mk(k){return{day:dayNo(k),date:k,type:defT(k),done:[],applicable:appIds(k,defT(k)),pct:0,reviewed:false,note:"",updatedAt:0}}
+function pct(k){const r=recs[k];if(!r)return 0;const a=r.type&&r.applicable&&r.applicable.length?r.applicable:appIds(k);return Math.round(a.filter(i=>r.done.includes(i)).length*100/a.length)}
+const cnt=k=>!!(recs[k]&&recs[k].reviewed);
+const el=()=>DATES.filter(k=>k<=today);
+const rvd=l=>l.filter(cnt);
+const avg=l=>l.length?Math.round(l.reduce((s,k)=>s+pct(k),0)/l.length):null;
+function persist(k){const r=recs[k];if(!r.type){r.type=typeOf(k);r.applicable=appIds(k,r.type)}r.pct=pct(k);r.updatedAt=Date.now();try{localStorage.setItem("adhi150",JSON.stringify(recs))}catch(e){}
+ pend[k]=1;clearTimeout(timer);if(!ref){setS("local");return}setS("syncing");timer=setTimeout(flush,450)}
+async function flush(){const ks=Object.keys(pend);pend={};try{for(const k of ks)await ref.doc(k).set(recs[k]);setS("account")}catch(e){ks.forEach(k=>pend[k]=1);setS("error")}}
+function editable(){return sel<=today&&(sel===today||edit)}
+function toggle(id,on){if(!editable())return;const r=recs[sel]||(recs[sel]=mk(sel));const s=new Set(r.done);on?s.add(id):s.delete(id);r.done=[...s];persist(sel);render()}
+function render(){
+ const k=sel,r=recs[k],d=parse(k),a=appIds(k),fut=k>today,past=k<today;const ty=typeOf(k);document.querySelectorAll("#tg button").forEach(b=>{b.className=b.dataset.t===ty?"p":"";b.disabled=!editable()});
+ $("dn").textContent="Day "+dayNo(k)+" of "+N;$("dt").textContent=d.toLocaleDateString(undefined,{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+ $("dp").min=START;$("dp").max=END;$("dp").value=k;$("pv").disabled=k<=START;$("nx").disabled=k>=END;
+ const p=pct(k),dn=r?a.filter(i=>r.done.includes(i)).length:0;
+ $("pc").textContent=p+"%";$("ring").style.background="conic-gradient(var(--ok) "+p*3.6+"deg,var(--lo) 0)";
+ $("cn").textContent=fut?"Future day (opens on its date)":dn+" of "+a.length+" habits"+(r&&r.reviewed?" · reviewed":r&&r.done.length?" · not yet reviewed":" · no data yet");
+ $("bn").innerHTML=fut?'<div class="bn">Future days are view-only until their date.</div>':past?'<div class="bn">'+(edit?"Edit mode is ON for a past day. Changes are saved.":"Viewing a past day (read-only).")+' <button id="ed">'+(edit?"Lock":"Enable edit mode")+'</button></div>':"";
+ if($("ed"))$("ed").onclick=()=>{edit=!edit;render()};
+ const ok=editable(),L=$("list");L.innerHTML="";
+ G.forEach(g=>{if(g[0]==="Sunday only"&&!isSun(k))return;const items=g[1].filter(x=>appIds(k).includes(x[0]));if(!items.length)return;const h=document.createElement("h3");h.textContent=g[0]==="School"&&ty==="holiday"?"Daytime":g[0];L.appendChild(h);
+  items.forEach(x=>{const on=r&&r.done.includes(x[0]);const l=document.createElement("label");l.className="it"+(on?" dn":"");
+   const c=document.createElement("input");c.type="checkbox";c.checked=!!on;c.disabled=!ok;c.onchange=()=>toggle(x[0],c.checked);
+   const s=document.createElement("span");s.className="x";s.textContent=lab(H.find(z=>z.id===x[0]),ty);l.append(c,s);L.appendChild(l)})});
+ const n=$("nt");if(document.activeElement!==n)n.value=r?r.note:"";n.disabled=!ok;
+ const b=$("rv");b.disabled=!ok;b.textContent=r&&r.reviewed?"Day reviewed ✓ (tap to undo)":"Mark day reviewed";b.className=r&&r.reviewed?"":"p";
+ analytics();
+}
+function rate(h,days){let c=0,n=0;days.filter(cnt).forEach(k=>{const r=recs[k];const a=r.type&&r.applicable&&r.applicable.length?r.applicable:appIds(k);if(a.includes(h.id)){n++;if(r.done.includes(h.id))c++}});return{c,n,p:n?Math.round(c*100/n):null}}
+function grp(list,days){let c=0,n=0;list.forEach(h=>{const x=rate(h,days);c+=x.c;n+=x.n});return n?Math.round(c*100/n):null}
+const fm=v=>v===null?"–":v+"%";
+function analytics(){
+ const E=el(),R=rvd(E),last7=E.slice(-7),prev7=E.slice(-14,-7),A=avg(R);
+ let cur=0;for(let i=E.length-1;i>=0;i--){const k=E[i];if(cnt(k)&&pct(k)>=TH)cur++;else if(k===today&&!cnt(k))continue;else break}
+ let lg=0,run=0;E.forEach(k=>{if(cnt(k)&&pct(k)>=TH){run++;lg=Math.max(lg,run)}else run=0});
+ const y=addD(today,-1),w7=avg(rvd(last7)),w7p=avg(rvd(prev7));
+ const best=R.slice().sort((a,b)=>pct(b)-pct(a))[0],worst=R.slice().sort((a,b)=>pct(a)-pct(b))[0];
+ const logged=E.filter(k=>recs[k]&&(recs[k].done.length||recs[k].reviewed)).length,perf=R.filter(k=>pct(k)===100).length;
+ const cons=E.length?Math.round(E.filter(k=>cnt(k)&&pct(k)>=TH).length*100/E.length):0;
+ const vy=cnt(y)&&y>=START?pct(y)-pct(today):null;
+ const S=[[A===null?"–":A+"%","Avg (reviewed)"],[cur,"Current streak"],[lg,"Longest streak"],[perf,"Perfect days"],[R.length+"/"+E.length,"Reviewed / elapsed"],[logged,"Days with data"],[cons+"%","Consistency ("+TH+"%+)"],
+  [cnt(y)&&y>=START?(pct(today)-pct(y)>=0?"+":"")+(pct(today)-pct(y))+" pts":"–","Today vs yesterday"],[w7===null||A===null?"–":(pct(today)-w7>=0?"+":"")+(pct(today)-w7)+" pts","Today vs 7-day avg"],
+  [best?best.slice(5)+" · "+pct(best)+"%":"–","Best day"],[worst?worst.slice(5)+" · "+pct(worst)+"%":"–","Weakest day"]];
+ $("ov").innerHTML=S.map(s=>'<div class="s"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>').join("");
+ const dw=w7!==null&&w7p!==null?w7-w7p:null;
+ $("wk").innerHTML='<div class="rw"><span>Current 7 days (reviewed '+rvd(last7).length+')</span><b>'+fm(w7)+'</b></div><div class="rw"><span>Previous 7 days (reviewed '+rvd(prev7).length+')</span><b>'+fm(w7p)+'</b></div><div class="rw"><span>Week-over-week</span><b class="'+(dw>0?"up":dw<0?"dw":"")+'">'+(dw===null?"not enough data":(dw>=0?"+":"")+dw+" pts")+'</b></div>';
+ let bh="";for(let i=6;i>=0;i--){const k=addD(today,-i);if(k<START)continue;const c=cnt(k),v=c?pct(k):0;bh+='<div class="bar'+(c?"":" na")+'"><span>'+(c?v:"–")+'</span><i style="height:'+Math.max(v*.75,2)+'%"></i><span>'+parse(k).toLocaleDateString(undefined,{weekday:"narrow"})+'</span></div>'}
+ $("b7").innerHTML=bh;
+ const ms={};R.forEach(k=>{const m=k.slice(0,7);(ms[m]=ms[m]||[]).push(k)});
+ $("bm").innerHTML=Object.keys(ms).map(m=>{const v=avg(ms[m]);return '<div class="bar"><span>'+v+'</span><i style="height:'+Math.max(v*.75,2)+'%"></i><span>'+parse(m+"-01").toLocaleDateString(undefined,{month:"short"})+'</span></div>'}).join("")||'<div class="note">No reviewed days yet.</div>';
+ $("bd").textContent=R.length?"Average of reviewed days per month.":"";
+ const l7=E.slice(-7),l14=E.slice(-14);
+ const pl=P.map(p=>{const hs=H.filter(h=>h.p===p[0]);return{n:p[1],a:grp(hs,E),r:grp(hs,l7),q:grp(hs,prev7)}});
+ $("pl").innerHTML=pl.map(x=>'<div class="rw"><span>'+x.n+'</span><b>'+fm(x.a)+'</b></div><div class="mt"><i style="width:'+(x.a||0)+'%"></i></div>').join("")+'<div class="note">All reviewed days. Each pillar uses only its own habits.</div>';
+ const hr=H.map(h=>({h,a:rate(h,E),s:rate(h,l7),t:rate(h,l14),q:rate(h,prev7)}));
+ const el2=hr.filter(x=>x.a.n>=3);
+ const top=el2.slice().sort((a,b)=>b.a.p-a.a.p)[0],low=el2.slice().sort((a,b)=>a.a.p-b.a.p)[0];
+ const tr=x=>x.s.n>=2&&x.q.n>=2?x.s.p-x.q.p:null;
+ const imp=hr.filter(x=>tr(x)!==null&&tr(x)>=10),dec=hr.filter(x=>tr(x)!==null&&tr(x)<=-10),need=el2.filter(x=>x.a.p<60);
+ const nm=x=>x.h.l.replace(/^\d+:\d+\s/,"");
+ $("hl").innerHTML=el2.length?'<div class="rw"><span>Most consistent</span><b>'+nm(top)+' ('+top.a.p+'%)</b></div><div class="rw"><span>Most often missed</span><b>'+nm(low)+' ('+low.a.p+'%)</b></div><div class="rw"><span>Improving</span><b>'+(imp.length?imp.map(nm).join(", "):"none yet")+'</b></div><div class="rw"><span>Declining</span><b>'+(dec.length?dec.map(nm).join(", "):"none yet")+'</b></div><div class="rw"><span>Need attention (&lt;60%)</span><b>'+(need.length?need.map(nm).join(", "):"none")+'</b></div>':'<div class="note">Habit highlights need at least 3 reviewed days.</div>';
+ $("ht").innerHTML='<tr><th>Habit</th><th>7d</th><th>14d</th><th>All</th><th></th></tr>'+hr.map(x=>{const t=tr(x);return '<tr><td></td><td>'+fm(x.s.p)+'</td><td>'+fm(x.t.p)+'</td><td>'+fm(x.a.p)+'</td><td class="'+(t>0?"up":t<0?"dw":"")+'">'+(t===null?"":t>0?"▲":t<0?"▼":"•")+'</td></tr>'}).join("");
+ [...$("ht").querySelectorAll("tr")].slice(1).forEach((tr_,i)=>tr_.firstChild.textContent=H[i].l.replace(/^\d+:\d+\s/,"")+(H[i].sun?" (Sun)":H[i].t==="h"?" (holiday)":H[i].t==="s"?" (school)":""));
+ // insights
+ const I=[];
+ if(R.length<3)I.push("Only "+R.length+" reviewed day(s) so far. Tap “Mark day reviewed” each night; insights unlock after 3 reviewed days.");
+ else{
+  const okp=pl.filter(x=>x.r!==null&&x.q!==null&&rvd(l7).length>=2&&rvd(prev7).length>=2).map(x=>({n:x.n,d:x.r-x.q}));
+  if(okp.length){const up=okp.slice().sort((a,b)=>b.d-a.d)[0],dn2=okp.slice().sort((a,b)=>a.d-b.d)[0];
+   I.push(up.d>0?"Improved this week: "+up.n+" ("+(up.d>0?"+":"")+up.d+" pts vs the previous 7 days).":"No pillar improved versus the previous 7 days.");
+   I.push(dn2.d<0?"Declined this week: "+dn2.n+" ("+dn2.d+" pts).":"No pillar declined versus the previous 7 days.")}
+  else I.push("Week-over-week comparison needs at least 2 reviewed days in both the last 7 and previous 7 days.");
+  const pv=pl.filter(x=>x.a!==null).sort((a,b)=>b.a-a.a);
+  if(pv.length>1){I.push("Strongest pillar: "+pv[0].n+" ("+pv[0].a+"%). Weakest pillar: "+pv[pv.length-1].n+" ("+pv[pv.length-1].a+"%).")}
+  const tm=addD(today,1),ta=tm<=END?appIds(tm):[];const cand=el2.filter(x=>ta.includes(x.h.id)).sort((a,b)=>a.a.p-b.a.p)[0];
+  if(cand)I.push("Prioritise tomorrow: “"+nm(cand)+"” ("+cand.a.p+"% so far, done "+cand.a.c+" of "+cand.a.n+" days).");
+  const gs=["Morning","School","Evening","Night"].map(g=>({g,v:grp(H.filter(h=>h.g===g),E)})).filter(x=>x.v!==null).sort((a,b)=>a.v-b.v);
+  if(gs.length>1&&gs[gs.length-1].v-gs[0].v>=10)I.push("Pattern: most misses fall in the "+gs[0].g+" block ("+gs[0].v+"% vs "+gs[gs.length-1].v+"% in "+gs[gs.length-1].g+").");
+  else I.push("No clear time-of-day pattern in missed habits yet (blocks are within 10 pts).");
+  if(low)I.push("One realistic action: tick “"+nm(low)+"” first thing it comes up tomorrow, and ignore everything else until it is a habit.")}
+ $("ins").innerHTML=I.map(t=>"<li></li>").join("");[...$("ins").children].forEach((li,i)=>li.textContent=I[i]);
+ // heat map
+ $("hm").innerHTML="";DATES.forEach(k=>{const c=document.createElement("div"),f=k>today,v=pct(k);c.textContent=dayNo(k);c.title=k+" · Day "+dayNo(k);
+  if(f)c.className="fu";else if(cnt(k))c.style.background="color-mix(in srgb,var(--ok) "+Math.max(v,12)+"%,var(--lo))";else if(k<today)c.className="nl";
+  if(k===sel)c.style.outline="2px solid var(--ac)";if(!f)c.onclick=()=>go(k);$("hm").appendChild(c)});
+}
+function go(k){sel=clampDay(k);edit=false;render()}
+$("pv").onclick=()=>go(addD(sel,-1));$("nx").onclick=()=>go(addD(sel,1));$("td").onclick=()=>go(clampDay(today));document.querySelectorAll("#tg button").forEach(b=>b.onclick=()=>{if(!editable())return;const r=recs[sel]||(recs[sel]=mk(sel));r.type=b.dataset.t;r.applicable=appIds(sel,r.type);persist(sel);render()});$("dp").onchange=e=>e.target.value&&go(e.target.value);
+$("nt").oninput=e=>{if(!editable())return;const r=recs[sel]||(recs[sel]=mk(sel));r.note=e.target.value;clearTimeout(nt);const k=sel;nt=setTimeout(()=>{persist(k);$("sc").textContent="Note saved ✓"},500)};
+$("rv").onclick=()=>{if(!editable())return;const r=recs[sel]||(recs[sel]=mk(sel));r.reviewed=!r.reviewed;persist(sel);$("sc").textContent=r.reviewed?"Day marked reviewed ✓":"Review removed";render()};
+$("th").onclick=()=>{const dk=matchMedia("(prefers-color-scheme:dark)").matches,cur=document.documentElement.dataset.theme||(dk?"dark":"light"),n=cur==="dark"?"light":"dark";document.documentElement.dataset.theme=n;try{localStorage.setItem("adhi-theme",n)}catch(e){}};
+$("ex").onclick=async()=>{const t=JSON.stringify({app:"adhi150",start:START,exported:new Date().toISOString(),days:recs},null,1);$("jx").value=t;
+ try{const d=await claude.use("downloads");if(d){await d.save({filename:"adhi-150-day-backup.json",data:t});$("iv").textContent="Export ready. JSON is also shown in the box (copy it as a second backup).";return}}catch(e){}
+ $("iv").textContent="Download not available here. Copy the JSON from the box and keep it safe."};
+function imp(t){try{const o=JSON.parse(t),d=o.days||o;let n=0;for(const k in d){if(!DATES.includes(k))continue;const r=d[k];if(!r||!Array.isArray(r.done))continue;if(!recs[k]||(r.updatedAt||0)>(recs[k].updatedAt||0)){recs[k]=Object.assign(mk(k),r,{day:dayNo(k),date:k});pend[k]=1;n++}}
+ try{localStorage.setItem("adhi150",JSON.stringify(recs))}catch(e){}if(ref&&n){setS("syncing");flush()}render();$("iv").textContent="Imported "+n+" day(s); newer local days were kept."}catch(e){$("iv").textContent="Import failed: not valid backup JSON."}}
+$("im").onclick=()=>imp($("jx").value);$("fl").onchange=e=>{const f=e.target.files[0];if(f){const r=new FileReader();r.onload=()=>imp(r.result);r.readAsText(f)}};
+function init(){today=key(new Date());sel=clampDay(today);
+ try{const t=localStorage.getItem("adhi-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}
+ try{const l=JSON.parse(localStorage.getItem("adhi150")||"{}");for(const k in l)if(DATES.includes(k))recs[k]=l[k]}catch(e){}
+ try{const o=JSON.parse(localStorage.getItem("adhi-log")||"{}");for(const k in o)if(DATES.includes(k)&&!recs[k]&&Array.isArray(o[k])){const r=mk(k);r.done=o[k].filter(i=>H.some(h=>h.id===i));r.updatedAt=1;recs[k]=r}}catch(e){}
+ setS("local");render();
+ setInterval(()=>{const t=key(new Date());if(t!==today){const was=sel===today;today=t;if(was)sel=clampDay(t);render()}},60000);
+ (async()=>{try{const u=await claude.use("user"),db=await claude.use("db");if(!u||!db)return;const id=await u.id();
+  ref=db.collection("data/users/"+id).doc("tracker").collection("days");setS("syncing");
+  const qs=await ref.get();const arr=[];if(qs.forEach)qs.forEach(d=>arr.push(d));else(qs.docs||[]).forEach(d=>arr.push(d));
+  arr.forEach(d=>{const v=typeof d.data==="function"?d.data():d.data;const k=d.id||(v&&v.date);if(!v||!DATES.includes(k))return;
+   if(!recs[k]||(v.updatedAt||0)>(recs[k].updatedAt||0))recs[k]=Object.assign(mk(k),v);else if((recs[k].updatedAt||0)>(v.updatedAt||0))pend[k]=1});
+  Object.keys(recs).forEach(k=>{if(!arr.some(d=>d.id===k))pend[k]=1});
+  try{localStorage.setItem("adhi150",JSON.stringify(recs))}catch(e){}
+  await flush();setS("account");render()}catch(e){setS(ref?"error":"local")}})()}
+init();
+</script></body></html>
